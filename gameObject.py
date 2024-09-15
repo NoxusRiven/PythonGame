@@ -22,30 +22,36 @@ class GameObject(ABC): #ABC stands for abstract
     def draw(self):
         pass
 
-    #cheking if object is touching another object
-    def is_colliding(self, object):
-        return self.rect.collidedict(object.rect)
+
+    def returnCollidedObject(self, selfObject):
+        for obj in GameObject.allObjects:
+            if obj == selfObject:
+                continue
+            if obj.rect.colliderect(self.rect):
+                return obj
+            
+        return None
 
     #iterating through all objects to check if they collide
     @classmethod
-    def check_collision(cls, rect, selfObject=None): 
+    def checkCollision(cls, rect, selfObject=None): 
         for obj in cls.allObjects:
             if obj == selfObject:
                 continue
             if obj.rect.colliderect(rect):
-                #print(f"Collision detected between {rect} and {obj}") #debugging
-                return True
-        return False
+                return obj
+        return None
 
     #making sure that no object can be drawn on one another
     def canBeDrawn(self):
-        while True:
-            if not GameObject.check_collision(self.rect, self):
-                self.draw()
-                break
-            else:
-                self.rect.x = random.randint(0, WINDOW_W - self.rect.width)
-                self.rect.y = random.randint(0, WINDOW_H - self.rect.height)
+        if self in GameObject.allObjects:   
+            while True:
+                if not GameObject.checkCollision(self.rect, self):
+                    self.draw()
+                    break
+                else:
+                    self.rect.x = random.randint(0, WINDOW_W - self.rect.width)
+                    self.rect.y = random.randint(0, WINDOW_H - self.rect.height)
                 
             
 

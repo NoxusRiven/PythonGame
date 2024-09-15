@@ -56,28 +56,33 @@ while gameIsRuning:
     #player movment
     futureRect = player.rect.copy()
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_w] and player.rect.x > 0: # if key is pressed and if player doesnt go outside the map
+    if keys[pygame.K_w] and player.rect.y > 0: # if key is pressed and if player doesnt go outside the map
         futureRect.y -= PLAYER_MOVE_SPEED
-        if not GameObject.check_collision(futureRect, player.rect):
+        if GameObject.checkCollision(futureRect, player.rect) == None:
             player.moveYAxis(-PLAYER_MOVE_SPEED) #nums of pixels moving
 
 
     if keys[pygame.K_a] and player.rect.x > 0:
         futureRect.x -= PLAYER_MOVE_SPEED
-        if not GameObject.check_collision(futureRect, player.rect):
+        if GameObject.checkCollision(futureRect, player.rect) == None:
             player.moveXAxis(-PLAYER_MOVE_SPEED)
 
 
-    if keys[pygame.K_s] and player.rect.y <= WINDOW_H - player.objHeight:
+    if keys[pygame.K_s] and player.rect.y <= WINDOW_H - player.rect.height:
         futureRect.y += PLAYER_MOVE_SPEED
-        if not GameObject.check_collision(futureRect, player.rect):
-
+        if GameObject.checkCollision(futureRect, player.rect) == None:
             player.moveYAxis(PLAYER_MOVE_SPEED)
     
-    if keys[pygame.K_d] and player.rect.x <= WINDOW_W - player.objWidth:
+    if keys[pygame.K_d] and player.rect.x <= WINDOW_W - player.rect.width:
         futureRect.x += PLAYER_MOVE_SPEED
-        if not GameObject.check_collision(futureRect, player.rect):
+        if GameObject.checkCollision(futureRect, player.rect) == None:
             player.moveXAxis(PLAYER_MOVE_SPEED)
+
+    if keys[pygame.K_f]:
+        collidingObject = GameObject.checkCollision(player.interaRect, player.rect)
+        if collidingObject != None:
+            player.interact(collidingObject)
+            
             
 
     gameMap.draw() #map refresh

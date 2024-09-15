@@ -37,6 +37,7 @@ class GameObject(ABC): #ABC stands for abstract
                 return True
         return False
 
+    #making sure that no object can be drawn on one another
     def canBeDrawn(self):
         while True:
             if not GameObject.check_collision(self.rect, self):

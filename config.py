@@ -12,7 +12,7 @@ PLAYER_HP = 0
 #------------
 
 
-#TREE STATS
+#ENVIRONMENT STATS
 #----------
 #1. small tree
 SMALL_TREE_H = 80
@@ -21,6 +21,14 @@ SMALL_TREE_W = 30
 #2. big tree
 BIG_TREE_H = 100
 BIG_TREE_W = 40
+
+#3. small rock
+SMALL_ROCK_H = 30
+SMALL_ROCK_W = 30
+
+#4. big rock
+BIG_ROCK_H = 70
+BIG_ROCK_W = 70
 #----------
 
 #MONSTER STATS

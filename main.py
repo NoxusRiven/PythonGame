@@ -5,6 +5,7 @@ from gameObject import GameObject
 from map import Map
 from player import Player
 from tree import Tree
+from rock import Rock
 from orc import Orc
 from goblin import Goblin
 
@@ -30,10 +31,12 @@ tree_big2 = Tree(gameWindow, BIG_TREE_H, BIG_TREE_W, random.randint(0,WINDOW_W-B
 tree_big3 = Tree(gameWindow, BIG_TREE_H, BIG_TREE_W, random.randint(0,WINDOW_W-BIG_TREE_W), random.randint(0,WINDOW_H-BIG_TREE_H))
 tree_big4 = Tree(gameWindow, BIG_TREE_H, BIG_TREE_W, random.randint(0,WINDOW_W-BIG_TREE_W), random.randint(0,WINDOW_H-BIG_TREE_H))
 
+rock_small1 = Rock(gameWindow, SMALL_ROCK_H, SMALL_ROCK_W, random.randint(0,WINDOW_W-SMALL_ROCK_W), random.randint(0,WINDOW_H-SMALL_ROCK_H))
+rock_small2 = Rock(gameWindow, SMALL_ROCK_H, SMALL_ROCK_W, random.randint(0,WINDOW_W-SMALL_ROCK_W), random.randint(0,WINDOW_H-SMALL_ROCK_H))
+rock_big1 = Rock(gameWindow, BIG_ROCK_H, BIG_ROCK_W, random.randint(0,WINDOW_W-BIG_ROCK_W), random.randint(0,WINDOW_H-BIG_ROCK_H))
+rock_big2 = Rock(gameWindow, BIG_ROCK_H, BIG_ROCK_W, random.randint(0,WINDOW_W-BIG_ROCK_W), random.randint(0,WINDOW_H-BIG_ROCK_H))
+
 #2. monsters
-#monster1 = Monster(gameWindow, MONSTER_H, MONSTER_W, random.randint(0,WINDOW_W-MONSTER_W), random.randint(0,WINDOW_H-MONSTER_H))
-#monster2 = Monster(gameWindow, MONSTER_H, MONSTER_W, random.randint(0,WINDOW_W-MONSTER_W), random.randint(0,WINDOW_H-MONSTER_H))
-#monster3 = Monster(gameWindow, MONSTER_H, MONSTER_W, random.randint(0,WINDOW_W-MONSTER_W), random.randint(0,WINDOW_H-MONSTER_H))
 goblin1 = Goblin(gameWindow, GOBLIN_H, GOBLIN_W, random.randint(0,WINDOW_W-GOBLIN_W), random.randint(0,WINDOW_H-GOBLIN_H), GOBLIN_DMG, GOBLIN_HP, GOBLIN_SPEED)
 goblin2 = Goblin(gameWindow, GOBLIN_H, GOBLIN_W, random.randint(0,WINDOW_W-GOBLIN_W), random.randint(0,WINDOW_H-GOBLIN_H), GOBLIN_DMG, GOBLIN_HP, GOBLIN_SPEED)
 
@@ -89,10 +92,14 @@ while gameIsRuning:
     tree_big3.canBeDrawn()
     tree_big4.canBeDrawn()
 
+    #drawing rocks
+    rock_small1.canBeDrawn()
+    rock_small2.canBeDrawn()
+    rock_big1.canBeDrawn()
+    rock_big2.canBeDrawn()
+
+
     #drawing monsters
-    #monster1.canBeDrawn()
-    #monster2.canBeDrawn()
-    #monster3.canBeDrawn()
     goblin1.canBeDrawn()
     goblin2.canBeDrawn()
     orc1.canBeDrawn()

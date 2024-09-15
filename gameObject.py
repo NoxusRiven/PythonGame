@@ -44,7 +44,8 @@ class GameObject(ABC): #ABC stands for abstract
                 self.draw()
                 break
             else:
-                self.rect.x = random.randint(0, window_w - self.rect.width)
-                self.rect.y = random.randint(0, window_h - self.rect.height)
+                self.rect.x = random.randint(0, WINDOW_W - self.rect.width)
+                self.rect.y = random.randint(0, WINDOW_H - self.rect.height)
+                
             
 

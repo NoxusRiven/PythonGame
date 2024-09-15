@@ -1,3 +1,48 @@
-#window size
-window_h = 850
-window_w = 1550
+#WINDOW SIZE
+#-----------
+WINDOW_H = 850
+WINDOW_W = 1550
+#-----------
+
+#PLAYER STATS
+#------------
+PLAYER_MOVE_SPEED = 5
+PLAYER_DMG = 0
+PLAYER_HP = 0
+#------------
+
+
+#TREE STATS
+#----------
+#1. small tree
+SMALL_TREE_H = 80
+SMALL_TREE_W = 30
+
+#2. big tree
+BIG_TREE_H = 100
+BIG_TREE_W = 40
+#----------
+
+#MONSTER STATS
+#--------------
+MONSTER_H = 50
+MONSTER_W = 50
+MONSTER_SPEED = 5
+MONSTER_DMG = 20
+MONSTER_HP = 100
+
+# 1. orc
+ORC_H = int(MONSTER_H*1.2)
+ORC_W = int(MONSTER_W*1.2)
+ORC_SPEED = int(MONSTER_SPEED*0.5)
+ORC_DMG = int(MONSTER_DMG*1.4)
+ORC_HP = int(MONSTER_HP*1.25)
+
+# 2. goblin
+GOBLIN_H = int(MONSTER_H*0.8)
+GOBLIN_W = int(MONSTER_W*0.8)
+GOBLIN_SPEED = int(MONSTER_SPEED*1.5)
+GOBLIN_DMG = int(MONSTER_DMG*1.25)
+GOBLIN_HP = int(MONSTER_HP*0.6)
+#--------------
+

@@ -1,10 +1,10 @@
 import pygame, random
-from gameObject import GameObject
+from collectable import Collectable
 
-class Rock(GameObject):
+class Rock(Collectable):
 
-    def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY):
-        super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY)
+    def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY, collecHp):
+        super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY, collecHp)
 
 
     def draw(self):

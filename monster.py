@@ -1,13 +1,12 @@
 import pygame
 from config import *
 from abc import ABC, abstractmethod
-from gameObject import GameObject
+from mob import Mob
 
 
-class Monster(GameObject):
+class Monster(Mob):
     
-    def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY, monsterDMG, monsterHP, monsterSPEED):
-        super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY)
+    def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY, mobHP, mobSPEED, monsterDMG):
+        super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY, mobHP, mobSPEED)
+
         self.monsterDMG = monsterDMG
-        self.monsterHP = monsterHP
-        self.monsterSPEED = monsterSPEED

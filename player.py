@@ -2,12 +2,13 @@ import pygame
 from gameObject import GameObject
 from tree import Tree
 from rock import Rock
-from monster import Monster
+from mob import Mob
 
 class Player(GameObject):
 
-    def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY):
+    def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY, playerDMG):
         super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY)
+        self.playerDMG = playerDMG
 
         self.interaRect = pygame.Rect(self.objPosX-10, self.objPosY-10, self.objWidth+20, self.objHeight+20)
 
@@ -22,7 +23,7 @@ class Player(GameObject):
 
     def draw(self):
         #pygame.draw.rect(self.gameWindow, pygame.Color(255,255,255), self.interaRect)
-        pygame.draw.rect(self.gameWindow, pygame.Color(255,100,100), self.rect) #drawing player
+        pygame.draw.rect(self.gameWindow, pygame.Color(255,50,50), self.rect) #drawing player
 
     def interact(self, object):
         pass
@@ -31,8 +32,8 @@ class Player(GameObject):
                 self.gather(object)
         elif isinstance(object, Rock):
                 self.gather(object)
-        elif isinstance(object, Monster):
-                pass
+        elif isinstance(object, Mob):
+                pass #self.attack(object)
     
     def gather(self, object):
         if object in GameObject.allObjects:

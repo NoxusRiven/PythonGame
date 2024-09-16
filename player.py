@@ -22,8 +22,12 @@ class Player(GameObject):
         self.interaRect.y += direction
 
     def draw(self):
-        #pygame.draw.rect(self.gameWindow, pygame.Color(255,255,255), self.interaRect)
-        pygame.draw.rect(self.gameWindow, pygame.Color(255,50,50), self.rect) #drawing player
+        #pygame.draw.rect(self.gameWindow, pygame.Color(255,255,255), self.interaRect) #drawing interactive range
+        #pygame.draw.rect(self.gameWindow, pygame.Color(255,50,50), self.rect) #drawing hitbox
+        pass
+        playerModel = pygame.image.load("Models/player_model.png")
+        self.gameWindow.blit(playerModel, (self.rect.x-40, self.rect.y))
+        #pygame.display.update()
 
     def interact(self, object):
         pass

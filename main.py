@@ -22,7 +22,7 @@ pygame.display.set_caption("My Game")
 #game objects
 gameMap = Map(gameWindow)
 
-player = Player(gameWindow, 50, 50, random.randint(50,1500), random.randint(0,800), PLAYER_DMG) #(window, size, X, Y)
+player = Player(gameWindow, 128, 50, random.randint(50,1500), random.randint(0,800), PLAYER_DMG) #(window, size, X, Y)
 
 #1. environment
 tree_small1 = Tree(gameWindow, SMALL_TREE_H, SMALL_TREE_W,  random.randint(0,WINDOW_W-SMALL_TREE_W), random.randint(0,WINDOW_H-SMALL_TREE_H), 2) #(window, X, Y)

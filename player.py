@@ -32,9 +32,12 @@ class Player(GameObject):
                 self.gather(object)
         elif isinstance(object, Rock):
                 self.gather(object)
-        elif isinstance(object, Mob):
-                pass #self.attack(object)
     
     def gather(self, object):
         if object in GameObject.allObjects:
             GameObject.allObjects.remove(object)
+
+    def attack(self, object):
+         if object in GameObject.allObjects:
+            if isinstance(object, Mob):
+                object.underAttack()

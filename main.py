@@ -129,14 +129,18 @@ while gameIsRuning:
         futureRect.x += PLAYER_MOVE_SPEED
         if GameObject.checkCollision(futureRect, player.rect) == None:
             player.moveXAxis(PLAYER_MOVE_SPEED)
+    
+    collidingObject = GameObject.checkCollision(player.interaRect, player.rect)
 
     if keys[pygame.K_f]:
-        collidingObject = GameObject.checkCollision(player.interaRect, player.rect)
         if collidingObject != None:
             player.interact(collidingObject)
-            
-            
+    
+    if keys[pygame.K_SPACE]:
+        if collidingObject != None:
+            player.attack(collidingObject)
 
+            
     gameMap.draw() #map refresh
     player.draw() #player refresh
     

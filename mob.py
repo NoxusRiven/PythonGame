@@ -13,10 +13,12 @@ class Mob(GameObject):
         self.mobSPEED = mobSPEED
         self.turnX = False
         self.turnY = False
+        self.gotAttacked = False
 
-        self.cooldown = 3
+        #self.cooldown = 3
 
         self.hitboxRect = pygame.Rect(self.objPosX-10, self.objPosY-10, self.objWidth+20, self.objHeight+20)
+        self.hpBarRect = pygame.Rect(self.rect.x-15, self.rect.y-15, 60 , 10)
 
 
     def moving(self, direction, mobMoveSpeed, start, destination):
@@ -72,3 +74,7 @@ class Mob(GameObject):
                 self.turnX = not self.turnX
             if self.rect.y <= 0 or self.rect.y >= WINDOW_H - self.rect.height:
                 self.turnY = not self.turnY
+
+    def underAttack(self):
+        self.gotAttacked = True
+        

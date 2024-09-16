@@ -1,5 +1,6 @@
 import pygame
 from config import*
+from gameObject import GameObject
 from monster import Monster
 
 class Goblin(Monster):
@@ -8,4 +9,5 @@ class Goblin(Monster):
         super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY, monsterDMG, monsterHP, monsterSPEED)
 
     def draw(self):
-        pygame.draw.rect(self.gameWindow, pygame.Color(50,255,50), self.rect)
+        if self in GameObject.allObjects:
+            pygame.draw.rect(self.gameWindow, pygame.Color(50,255,50), self.rect)

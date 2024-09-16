@@ -1,5 +1,6 @@
 import pygame
 from config import*
+from gameObject import GameObject
 from monster import Monster
 
 class Orc(Monster):
@@ -8,4 +9,5 @@ class Orc(Monster):
         super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY, monsterDMG, monsterHP, monsterSPEED)
 
     def draw(self):
-        pygame.draw.rect(self.gameWindow, pygame.Color(10,50,10), self.rect)
+        if self in GameObject.allObjects:
+            pygame.draw.rect(self.gameWindow, pygame.Color(10,50,10), self.rect)

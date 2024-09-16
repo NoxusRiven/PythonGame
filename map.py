@@ -1,6 +1,6 @@
 import pygame
 
-class Map():
+class Map:
     
     def __init__(self,gameWindow):
         self.gameWindow = gameWindow

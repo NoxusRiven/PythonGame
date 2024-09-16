@@ -1,4 +1,5 @@
 import pygame, random
+from gameObject import GameObject
 from collectable import Collectable
 
 class Tree(Collectable):
@@ -8,6 +9,7 @@ class Tree(Collectable):
 
 
     def draw(self):
-        pygame.draw.rect(self.gameWindow, pygame.Color(55,0,0), self.rect)
+        if self in GameObject.allObjects:
+            pygame.draw.rect(self.gameWindow, pygame.Color(55,0,0), self.rect)
         
 

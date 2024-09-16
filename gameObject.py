@@ -22,16 +22,6 @@ class GameObject(ABC): #ABC stands for abstract
     def draw(self):
         pass
 
-
-    def returnCollidedObject(self, selfObject):
-        for obj in GameObject.allObjects:
-            if obj == selfObject:
-                continue
-            if obj.rect.colliderect(self.rect):
-                return obj
-            
-        return None
-
     #iterating through all objects to check if they collide
     @classmethod
     def checkCollision(cls, rect, selfObject=None): 

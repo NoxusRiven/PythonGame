@@ -89,10 +89,10 @@ pig3.canBeDrawn()
 cow1 = Cow(gameWindow, COW_H, COW_W, COW_START_X, COW_START_Y, COW_HP, COW_SPEED)
 cow1.canBeDrawn()
 
-cow2 = Cow(gameWindow, COW_H+50, COW_W+50, COW_START_X, COW_START_Y, COW_HP, COW_SPEED)
+cow2 = Cow(gameWindow, COW_H, COW_W, COW_START_X, COW_START_Y, COW_HP, COW_SPEED)
 cow2.canBeDrawn()
 
-cow3 = Cow(gameWindow, COW_H+100, COW_W+100, COW_START_X, COW_START_Y, COW_HP, COW_SPEED)
+cow3 = Cow(gameWindow, COW_H, COW_W, COW_START_X, COW_START_Y, COW_HP, COW_SPEED)
 cow3.canBeDrawn()
 
 gameIsRuning = True
@@ -159,41 +159,41 @@ while gameIsRuning:
     #drawing monsters
     goblin1.draw()
     if GameObject.checkCollision(cow1):
-        goblin1.moving(random.randint(0,20), cow1.mobSPEED, COW_START_X, GOBLIN_H)
+        goblin1.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
     goblin2.draw()
     if GameObject.checkCollision(cow1):
-        goblin2.moving(random.randint(0,20), cow1.mobSPEED, COW_START_X, GOBLIN_H)
+        goblin2.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
     orc1.draw()
     if GameObject.checkCollision(cow1):
-        orc1.moving(random.randint(0,20), cow1.mobSPEED, COW_START_X, ORC_H)
+        orc1.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
     orc2.draw()
     if GameObject.checkCollision(cow1):
-        orc2.moving(random.randint(0,20), cow1.mobSPEED, COW_START_X, random.randint(0,WINDOW_H-ORC_H))
+        orc2.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
 
     #drawing passive mobs (moving)
     #1.PIG
     pig1.draw()
     if GameObject.checkCollision(cow1):
-        pig1.moving(random.randint(0,20), cow1.mobSPEED, PIG_START_X, random.randint(0,WINDOW_H-PIG_H))
+        pig1.moving(random.randint(0,50), cow1.mobSPEED, PIG_START_X, destination=random.randint(0,WINDOW_H-PIG_H))
     pig2.draw()
     if GameObject.checkCollision(cow1):
-        pig2.moving(random.randint(0,20), cow1.mobSPEED, PIG_START_X, random.randint(0,WINDOW_H-PIG_H))
+        pig2.moving(random.randint(0,50), cow1.mobSPEED, PIG_START_X, destination=random.randint(0,WINDOW_H-PIG_H))
     pig3.draw()
     if GameObject.checkCollision(cow1):
-        pig3.moving(random.randint(0,20), cow1.mobSPEED, PIG_START_X, random.randint(0,WINDOW_H-PIG_H))
+        pig3.moving(random.randint(0,50), cow1.mobSPEED, PIG_START_X, destination=random.randint(0,WINDOW_H-PIG_H))
     
     #2.COW
     cow1.draw()
     if GameObject.checkCollision(cow1):
-        cow1.moving(random.randint(0,20), cow1.mobSPEED, COW_START_X, random.randint(0,WINDOW_H-COW_H))
+        cow1.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-COW_H))
 
     cow2.draw()
     if GameObject.checkCollision(cow1):
-        cow2.moving(random.randint(0,10), cow1.mobSPEED, COW_START_X, random.randint(0,WINDOW_H-COW_H))
+        cow2.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-COW_H))
     
     cow3.draw()
     if GameObject.checkCollision(cow1):
-        cow3.moving(random.randint(0,20), cow1.mobSPEED, COW_START_X, random.randint(0,WINDOW_H-COW_H))
+        cow3.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-COW_H))
 
 
     pygame.display.flip() #update the full display surface to the screen

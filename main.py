@@ -112,22 +112,26 @@ while gameIsRuning:
         futureRect.y -= PLAYER_MOVE_SPEED
         if GameObject.checkCollision(futureRect, player.rect) == None:
             player.moveYAxis(-PLAYER_MOVE_SPEED) #nums of pixels moving
+            player.playerModel = pygame.image.load("Models/Player/player_model_moving_up.png")
 
 
     if keys[pygame.K_a] and player.rect.x > 0:
         futureRect.x -= PLAYER_MOVE_SPEED
         if GameObject.checkCollision(futureRect, player.rect) == None:
+            player.playerModel = pygame.transform.flip(pygame.image.load("Models/Player/player_model_moving_l_r.png"), True, False)
             player.moveXAxis(-PLAYER_MOVE_SPEED)
 
 
     if keys[pygame.K_s] and player.rect.y <= WINDOW_H - player.rect.height:
         futureRect.y += PLAYER_MOVE_SPEED
         if GameObject.checkCollision(futureRect, player.rect) == None:
+            player.playerModel = pygame.image.load("Models/Player/player_model_moving_down.png")
             player.moveYAxis(PLAYER_MOVE_SPEED)
     
     if keys[pygame.K_d] and player.rect.x <= WINDOW_W - player.rect.width:
         futureRect.x += PLAYER_MOVE_SPEED
         if GameObject.checkCollision(futureRect, player.rect) == None:
+            player.playerModel = pygame.image.load("Models/Player/player_model_moving_l_r.png")
             player.moveXAxis(PLAYER_MOVE_SPEED)
     
     collidingObject = GameObject.checkCollision(player.interaRect, player.rect)

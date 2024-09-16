@@ -9,7 +9,7 @@ class Player(GameObject):
     def __init__(self, gameWindow, objHeight, objWidth, objPosX, objPosY, playerDMG):
         super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY)
         self.playerDMG = playerDMG
-
+        self.playerModel = pygame.image.load("Models/Player/player_model_moving_down.png")
         self.interaRect = pygame.Rect(self.objPosX-10, self.objPosY-10, self.objWidth+20, self.objHeight+20)
 
     def moveXAxis(self,direction):
@@ -25,8 +25,8 @@ class Player(GameObject):
         #pygame.draw.rect(self.gameWindow, pygame.Color(255,255,255), self.interaRect) #drawing interactive range
         #pygame.draw.rect(self.gameWindow, pygame.Color(255,50,50), self.rect) #drawing hitbox
         pass
-        playerModel = pygame.image.load("Models/player_model.png")
-        self.gameWindow.blit(playerModel, (self.rect.x-40, self.rect.y))
+        
+        self.gameWindow.blit(self.playerModel, (self.rect.x-40, self.rect.y))
         #pygame.display.update()
 
     def interact(self, object):

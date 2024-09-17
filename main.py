@@ -26,12 +26,15 @@ player = Player(gameWindow, 128, 50, random.randint(50,1500), random.randint(0,8
 
 #1. environment
 tree_small1 = Tree(gameWindow, SMALL_TREE_H, SMALL_TREE_W,  random.randint(0,WINDOW_W-SMALL_TREE_W), random.randint(0,WINDOW_H-SMALL_TREE_H), 2) #(window, X, Y)
+tree_small1.makeSmall()
 tree_small1.canBeDrawn()
 
 tree_small2 = Tree(gameWindow, SMALL_TREE_H, SMALL_TREE_W,  random.randint(0,WINDOW_W-SMALL_TREE_W), random.randint(0,WINDOW_H-SMALL_TREE_H), 2)
+tree_small2.makeSmall()
 tree_small2.canBeDrawn()
 
 tree_small3 = Tree(gameWindow, SMALL_TREE_H, SMALL_TREE_W,  random.randint(0,WINDOW_W-SMALL_TREE_W), random.randint(0,WINDOW_H-SMALL_TREE_H), 2)
+tree_small3.makeSmall()
 tree_small3.canBeDrawn()
 
 tree_big1 = Tree(gameWindow, BIG_TREE_H, BIG_TREE_W, random.randint(0,WINDOW_W-BIG_TREE_W), random.randint(0,WINDOW_H-BIG_TREE_H), 3)
@@ -48,9 +51,11 @@ tree_big4.canBeDrawn()
 
 
 rock_small1 = Rock(gameWindow, SMALL_ROCK_H, SMALL_ROCK_W, random.randint(0,WINDOW_W-SMALL_ROCK_W), random.randint(0,WINDOW_H-SMALL_ROCK_H), 1)
+rock_small1.makeSmall()
 rock_small1.canBeDrawn()
 
 rock_small2 = Rock(gameWindow, SMALL_ROCK_H, SMALL_ROCK_W, random.randint(0,WINDOW_W-SMALL_ROCK_W), random.randint(0,WINDOW_H-SMALL_ROCK_H), 1)
+rock_small2.makeSmall()
 rock_small2.canBeDrawn()
 
 rock_big1 = Rock(gameWindow, BIG_ROCK_H, BIG_ROCK_W, random.randint(0,WINDOW_W-BIG_ROCK_W), random.randint(0,WINDOW_H-BIG_ROCK_H), 2)
@@ -166,28 +171,28 @@ while gameIsRuning:
 
     #drawing monsters
     goblin1.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(goblin1):
         goblin1.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
     goblin2.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(goblin2):
         goblin2.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
     orc1.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(orc1):
         orc1.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
     orc2.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(orc2):
         orc2.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-ORC_H))
 
     #drawing passive mobs (moving)
     #1.PIG
     pig1.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(pig1):
         pig1.moving(random.randint(0,50), cow1.mobSPEED, PIG_START_X, destination=random.randint(0,WINDOW_H-PIG_H))
     pig2.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(pig2):
         pig2.moving(random.randint(0,50), cow1.mobSPEED, PIG_START_X, destination=random.randint(0,WINDOW_H-PIG_H))
     pig3.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(pig3):
         pig3.moving(random.randint(0,50), cow1.mobSPEED, PIG_START_X, destination=random.randint(0,WINDOW_H-PIG_H))
     
     #2.COW
@@ -196,11 +201,11 @@ while gameIsRuning:
         cow1.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-COW_H))
 
     cow2.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(cow2):
         cow2.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-COW_H))
     
     cow3.draw()
-    if GameObject.checkCollision(cow1):
+    if GameObject.checkCollision(cow3):
         cow3.moving(random.randint(0,50), cow1.mobSPEED, COW_START_X, destination=random.randint(0,WINDOW_H-COW_H))
 
 

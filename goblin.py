@@ -13,5 +13,4 @@ class Goblin(Monster):
             pygame.draw.rect(self.gameWindow, pygame.Color(50,255,50), self.rect)
         
         if self.gotAttacked:
-            self.hpBarRect = pygame.Rect(self.rect.x, self.rect.y-15, self.rect.width , 10)
-            pygame.draw.rect(self.gameWindow, pygame.Color(20,20,20), self.hpBarRect)
+            super().draw()

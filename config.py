@@ -16,21 +16,21 @@ PLAYER_HP = 150
 
 #ENVIRONMENT STATS
 #----------
-#1. small tree
-SMALL_TREE_H = 80
-SMALL_TREE_W = 30
+#1. big tree
+BIG_TREE_H = 128
+BIG_TREE_W = 96
 
-#2. big tree
-BIG_TREE_H = 100
-BIG_TREE_W = 40
+#2. small tree
+SMALL_TREE_H = int(BIG_TREE_H/2)
+SMALL_TREE_W = int(BIG_TREE_W/2)+20
 
-#3. small rock
-SMALL_ROCK_H = 30
-SMALL_ROCK_W = 30
-
-#4. big rock
+#3. big rock
 BIG_ROCK_H = 70
 BIG_ROCK_W = 70
+
+#4. small rock
+SMALL_ROCK_H = int(BIG_ROCK_H/2)
+SMALL_ROCK_W = int(BIG_ROCK_W/2)
 #----------
 
 #MONSTER STATS

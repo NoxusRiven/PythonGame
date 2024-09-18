@@ -15,23 +15,27 @@ class Mob(GameObject):
         self.turnX = False
         self.turnY = False
         self.gotAttacked = False
+        self.fullHp = self.mobHP
 
         #self.cooldown = 3
 
-        self.hitboxRect = pygame.Rect(self.objPosX-10, self.objPosY-10, self.objWidth+20, self.objHeight+20)
-        self.hpBarRect = pygame.Rect(self.rect.x-15, self.rect.y-15, 60 , 10)
+        self.hitboxRect = pygame.Rect(self.objPosX-15, self.objPosY-15, self.objWidth+30, self.objHeight+30)
     
 
     def draw(self):
         self.hpBarRect = pygame.Rect(self.rect.x, self.rect.y-15, self.rect.width , 10)
         pygame.draw.rect(self.gameWindow, pygame.Color(20,20,20), self.hpBarRect)
+        #pygame.draw.rect(self.gameWindow, pygame.Color(255,255,255), self.hitboxRect)
 
 
     def moving(self, direction, mobMoveSpeed, start, destination):
+        previousX = self.rect.x
+        previousY = self.rect.y
+        
         colliding_object = GameObject.checkCollision(self.hitboxRect, self)
         
         #checking collision with screen edges
-        if  (colliding_object == None and 
+        if  (colliding_object is None and 
             0 <= self.rect.y <= WINDOW_H - self.rect.height and 
             0 <= self.rect.x <= WINDOW_W - self.rect.width):    
             
@@ -63,24 +67,39 @@ class Mob(GameObject):
                     if self.rect.y <= start:
                         self.turnY = False
         else:
-            #if collision got detected we turn
+            #if collision got detected we turn, revert move
             if colliding_object:
-                #turn back object (mobSpeed value)
-                if direction == 0:  #if X axies
-                    self.rect.x -= mobMoveSpeed if not self.turnX else -mobMoveSpeed
-                    self.hitboxRect.x -= mobMoveSpeed if not self.turnX else -mobMoveSpeed
-                    self.turnX = not self.turnX
-                elif direction == 1:  #if Y axies
-                    self.rect.y -= mobMoveSpeed if not self.turnY else -mobMoveSpeed
-                    self.hitboxRect.y -= mobMoveSpeed if not self.turnY else -mobMoveSpeed
-                    self.turnY = not self.turnY
+                #print(f"{self} collided with {colliding_object}") debuging
+
+                self.rect.x = previousX
+                self.rect.y = previousY
+                self.hitboxRect.x = previousX-15
+                self.hitboxRect.y = previousY-15
 
             #Screen edges collision
-            if self.rect.x <= 0 or self.rect.x >= WINDOW_W - self.rect.width:
+            if direction == 0:  # X-axis collision
                 self.turnX = not self.turnX
-            if self.rect.y <= 0 or self.rect.y >= WINDOW_H - self.rect.height:
+                self.rect.x += mobMoveSpeed*2 if not self.turnX else -mobMoveSpeed*2
+                self.hitboxRect.x += mobMoveSpeed*2 if not self.turnX else -mobMoveSpeed*2
+            elif direction == 1:  # Y-axis collision
                 self.turnY = not self.turnY
-
-    def underAttack(self):
-        self.gotAttacked = True
+                self.rect.y += mobMoveSpeed*2 if not self.turnY else -mobMoveSpeed*2
+                self.hitboxRect.y += mobMoveSpeed*2 if not self.turnY else -mobMoveSpeed*2
         
+        # Kolizja z krawędzią ekranu
+        if self.rect.x <= 0 or self.rect.x >= WINDOW_W - self.rect.width:
+            self.turnX = not self.turnX
+        if self.rect.y <= 0 or self.rect.y >= WINDOW_H - self.rect.height:
+            self.turnY = not self.turnY
+        
+
+    def underAttack(self, playerDMG):
+        self.gotAttacked = True
+        #self.updateHPBar(playerDMG)
+        #self.gotAttacked = False
+        
+    def updateHPBar(self, playerDMG):
+        self.mobHP -= playerDMG
+        dmgDone = self.mobHP/self.fullHp
+        print("i update hp bar")
+        self.hpBarRect = self.hpBarRect = pygame.Rect(self.rect.x, self.rect.y-15, int(self.rect.width*dmgDone), 10)

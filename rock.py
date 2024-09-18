@@ -14,7 +14,7 @@ class Rock(Collectable):
 
     def draw(self):
         if self in GameObject.allObjects:
-            pygame.draw.rect(self.gameWindow, pygame.Color(55,55,55), self.rect)
+            #pygame.draw.rect(self.gameWindow, pygame.Color(55,55,55), self.rect)
             self.gameWindow.blit(self.rockModel, (self.rect.x, self.rect.y))
 
     def makeSmall(self):

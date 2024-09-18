@@ -13,9 +13,9 @@ class Tree(Collectable):
 
     def draw(self):
         if self in GameObject.allObjects:
-            pygame.draw.rect(self.gameWindow, pygame.Color(55,0,0), self.rect)
-            self.gameWindow.blit(self.treeModel, (self.rect.x, self.rect.y))
+            #pygame.draw.rect(self.gameWindow, pygame.Color(55,0,0), self.rect) #hitbox
+            self.gameWindow.blit(self.treeModel, (self.rect.x-8, self.rect.y))
 
         
     def makeSmall(self):
-        self.treeModel = pygame.transform.scale(self.treeModel, (SMALL_TREE_W, SMALL_TREE_H))
+        self.treeModel = pygame.transform.scale(self.treeModel, (SMALL_TREE_H, SMALL_TREE_H))

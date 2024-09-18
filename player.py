@@ -10,7 +10,7 @@ class Player(GameObject):
         super().__init__(gameWindow, objHeight, objWidth, objPosX, objPosY)
         self.playerDMG = playerDMG
         self.playerModel = pygame.image.load("Models/Player/player_model_moving_down.png")
-        self.interaRect = pygame.Rect(self.objPosX-10, self.objPosY-10, self.objWidth+20, self.objHeight+20)
+        self.interaRect = pygame.Rect(self.rect.x-10, self.rect.y-10, self.rect.width+20, self.rect.height+20)
 
     def moveXAxis(self,direction):
         self.rect.x += direction
@@ -22,17 +22,14 @@ class Player(GameObject):
         self.interaRect.y += direction
 
     def draw(self):
+        #debuging
         #pygame.draw.rect(self.gameWindow, pygame.Color(255,255,255), self.interaRect) #drawing interactive range
         #pygame.draw.rect(self.gameWindow, pygame.Color(255,50,50), self.rect) #drawing hitbox
-        pass
         
         self.gameWindow.blit(self.playerModel, (self.rect.x-40, self.rect.y))
-        #pygame.display.update()
 
     def interact(self, object):
-        pass
-        #if self.rect.colliderect(object.rect):
-        if isinstance(object, Tree): #program doesnt detect interaction with tree
+        if isinstance(object, Tree):
                 self.gather(object)
         elif isinstance(object, Rock):
                 self.gather(object)
@@ -44,4 +41,4 @@ class Player(GameObject):
     def attack(self, object):
          if object in GameObject.allObjects:
             if isinstance(object, Mob):
-                object.underAttack()
+                object.underAttack(self.playerDMG)
